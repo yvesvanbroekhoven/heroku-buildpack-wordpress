@@ -34,14 +34,19 @@ mv * $CACHE_DIR/www
 mv $CACHE_DIR/www .
 
 
-echo "----> WP_ENV=$WP_ENV"
-echo "----> BUILD_DIR=$BUILD_DIR"
-echo "----> CACHE_DIR=$CACHE_DIR"
+# Initialize environment if not set
 if [ -z "$WP_ENV" ]; then
   WP_ENV=production
 fi
 
 # Move Wordpress environment config to wp-config.php
+#
+# Naming convention:
+# wp-config-ENVIRONMENT.php
+#
+# Example if WP_ENV is 'staging':
+# wp-config-staging.php
+#
 cd $BUILD_DIR
 if [ -f "$BUILD_DIR/www/wp-config-$WP_ENV.php" ]; then
   echo "-----> Copy wp-config-$WP_ENV.php to wp-config.php"

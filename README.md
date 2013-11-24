@@ -1,7 +1,7 @@
-Apache+PHP build pack
-========================
+Apache+PHP build pack for Wordpress
+===================================
 
-This is a build pack bundling PHP and Apache for Heroku apps.
+This is a build pack bundling PHP and Apache for Wordpress Heroku apps.
 
 Configuration
 -------------
