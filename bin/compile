@@ -33,6 +33,21 @@ mkdir -p $CACHE_DIR/www
 mv * $CACHE_DIR/www
 mv $CACHE_DIR/www .
 
+
+if [ -z "$WP_ENV" ]; then
+  WP_ENV=production
+fi
+
+# Move Wordpress environment config to wp-config.php
+cd $BUILD_DIR
+if [ -f "/app/www/wp-config-$WP_ENV.php" ]; then
+  echo "-----> Copy wp-config-$WP_ENV.php to wp-config.php"
+  cp -f "/app/www/wp-config-$WP_ENV.php" "/app/www/wp-config.php"
+else
+  echo "[ERROR] Can't find /app/www/wp-config-$WP_ENV.php"
+  exit 1
+fi
+
 # keep Procfile
 if [ -f www/Procfile ]; then
   mv www/Procfile .
