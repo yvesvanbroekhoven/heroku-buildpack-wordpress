@@ -35,6 +35,8 @@ mv $CACHE_DIR/www .
 
 
 echo "----> WP_ENV=$WP_ENV"
+echo "----> BUILD_DIR=$BUILD_DIR"
+echo "----> CACHE_DIR=$CACHE_DIR"
 if [ -z "$WP_ENV" ]; then
   WP_ENV=production
 fi
