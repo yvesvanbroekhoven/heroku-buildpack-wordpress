@@ -43,11 +43,11 @@ fi
 
 # Move Wordpress environment config to wp-config.php
 cd $BUILD_DIR
-if [ -f "/app/www/wp-config-$WP_ENV.php" ]; then
+if [ -f "$BUILD_DIR/www/wp-config-$WP_ENV.php" ]; then
   echo "-----> Copy wp-config-$WP_ENV.php to wp-config.php"
-  cp -f "/app/www/wp-config-$WP_ENV.php" "/app/www/wp-config.php"
+  cp -f "$BUILD_DIR/www/wp-config-$WP_ENV.php" "/app/www/wp-config.php"
 else
-  echo "[ERROR] Can't find /app/www/wp-config-$WP_ENV.php"
+  echo "[ERROR] Can't find $BUILD_DIR/www/wp-config-$WP_ENV.php"
   exit 1
 fi
 
