@@ -56,6 +56,7 @@ else
   exit 1
 fi
 
+
 # keep Procfile
 if [ -f www/Procfile ]; then
   mv www/Procfile .
@@ -76,6 +77,11 @@ curl --silent --max-time 60 --location "$PHP_URL" | tar xz
 # update config files
 cp $LP_DIR/conf/httpd.conf $APACHE_PATH/conf
 cp $LP_DIR/conf/php.ini php
+
+cat >> "$BUILD_DIR/php" <<HEREDOC
+extension_dir = "/app/www/ext/"
+extension=imagick.so
+HEREDOC
 
 # make php available on bin
 mkdir -p bin
